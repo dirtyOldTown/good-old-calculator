@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="main.js" defer></script>
+</head>
+<body>
+  <main>
+    <div class="calculator-container">
+    <section id="monitor">
+      <div class="back-display">
+       <input type="text" placeholder="0">
+      </div>
+    </section>
+    <section id="calculator-table">
+      <ul class="table-container">
+        <li>
+          <button type="button" class="input-view number">7</button>
+          <button type="button" class="input-view number">8</button>
+          <button type="button" class="input-view number">9</button>
+          <button type="button" class="input-view operator">+</button>
+        </li>
+        <li>
+          <button type="button" class="input-view number">4</button>
+          <button type="button" class="input-view number">5</button>
+          <button type="button" class="input-view number">6</button>
+          <button type="button" class="input-view operator first-allowed full">-</button>
+        </li>
+        <li>
+          <button type="button" class="input-view number">1</button>
+          <button type="button" class="input-view number">2</button>
+          <button type="button" class="input-view number">3</button>
+          <button type="button" class="input-view operator">*</button>
+        </li>
+          <li>
+          <button type="button" class="input-view first-allowed bracket left-bracket">(</button>
+          <button type="button" class="input-view bracket right-bracket">)</button>
+          <button type="button" class="input-view">&Sqrt;</button>
+          <button type="button" class="input-view">log</button>
+        </li>
+        <li>
+          <button type="button" class="input-view operator dot full">.</button>
+          <button type="button" class="input-view number zero">0</button>
+          <button type="button" class=" equal">=</button>
+          <button type="button" class="input-view operator full">/</button>
+        </li>
+      </ul>
+    </section>
+    </div>
+  </main>
+</body>
+</html>
