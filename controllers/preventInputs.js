@@ -14,7 +14,7 @@ export function preventIncorrectEntry(arr, target) {
 }
 function preventIncorrectOperator(arr, target) {
   return arr.length > 0 && 
- (/[\+\/\*\-\(\.]/g.test(arr.at(-1).textContent) &&
+  (/[\+\/\*\-\(\.]/g.test(arr.at(-1).textContent) &&
   /[\+\/\*\-\)\.]/g.test(target.textContent)) &&
    !(/[\(]/g.test( arr.at(-1).textContent) &&
     /[\-]/g.test(target.textContent));

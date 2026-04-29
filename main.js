@@ -1,11 +1,9 @@
 import { preventIncorrectEntry } from "./controllers/preventInputs.js";
-import { getStartingExpression } from "./data/expressions.js";
 import { removeIncorrectEntry } from "./controllers/removeInputs.js";
-import { updateExpression } from "./controllers/updateExpression.js";
+import { updateRoughExpression} from "./controllers/expressions.js";
 
 const mainTable = document.querySelector(".back-display input");
 let arr = [];
-let roughExpression = "";
 let expression = "";
 
 document.addEventListener("click", (e) => {
@@ -15,14 +13,13 @@ document.addEventListener("click", (e) => {
   //Regulation when entering expression
   preventIncorrectEntry(arr, target);
   removeIncorrectEntry(arr, target);
-  
+
   //Update rough expression before calculation
-  roughExpression = getStartingExpression(arr);
-  expression = updateExpression(roughExpression, expression);
+  expression = updateRoughExpression(arr)
   mainTable.value = expression;
 });
 
-
+  
 
 
 
