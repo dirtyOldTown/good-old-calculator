@@ -12,7 +12,10 @@ export function updateRoughExpression(arr) {
   if(/(?<=\d)[\(]/g.test(expression)) {
     expression = expression.replace(/(?<=\d)[\(]/g, "*$&");
   }
-
+  
+  //localStorage.setItem("expression", expression);
   return expression;
 }
 
+/* let storage = localStorage.getItem("expression");
+console.log(storage) */

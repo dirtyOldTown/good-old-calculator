@@ -1,25 +1,31 @@
-import { preventIncorrectEntry } from "./controllers/preventInputs.js";
-import { removeIncorrectEntry } from "./controllers/removeInputs.js";
-import { updateRoughExpression} from "./controllers/expressions.js";
+import { Calculator } from "./controllers/calculator.class.js";
+import { Operation } from "./controllers/operations.class.js";
+import { DISPLAY } from "./config/elements.js";
 
 const mainTable = document.querySelector(".back-display input");
 let arr = [];
 let expression = "";
 
+// Class Calculator initialization
+let calculator = new Calculator();
+
 document.addEventListener("click", (e) => {
   let target = e.target.closest(".input-view");
   if (!target) return;
-
   //Regulation when entering expression
-  preventIncorrectEntry(arr, target);
-  removeIncorrectEntry(arr, target);
-
+  calculator.preventIncorrectEntry(arr, target);
+  calculator.removeIncorrectEntry(arr);
+  
   //Update rough expression before calculation
-  expression = updateRoughExpression(arr)
+  expression = calculator.updateRoughExpression(arr);
   mainTable.value = expression;
 });
 
-  
+// Regulation & Operation
+let operation = new Operation();
+
+operation.allClear(arr, expression, DISPLAY);
+operation.clear(arr, expression, DISPLAY)
 
 
 

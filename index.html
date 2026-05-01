@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
+   <script src="https://kit.fontawesome.com/68977216dc.js" crossorigin="anonymous" async></script>
   <script type="module" src="main.js" defer></script>
 </head>
 <body>
@@ -17,6 +18,12 @@
     </section>
     <section id="calculator-table">
       <ul class="table-container">
+        <li>
+          <button id="all-clear" type="button" class="computation regulation">AC</button>
+          <button id="clear" type="button" class="computation clear"><i class="fas fa-backspace fa-back"></i></button>
+          <button type="button" class="input-view computation">&pi;</button>
+          <button type="button" class="input-view computation">e</button>
+        </li>
         <li>
           <button type="button" class="input-view number">7</button>
           <button type="button" class="input-view number">8</button>
@@ -39,13 +46,13 @@
           <button type="button" class="input-view first-allowed bracket left-bracket">(</button>
           <button type="button" class="input-view bracket right-bracket">)</button>
           <button type="button" class="input-view">&Sqrt;</button>
-          <button type="button" class="input-view">log</button>
+          <button type="button" class="input-view operator">/</button>
         </li>
         <li>
           <button type="button" class="input-view operator dot full">.</button>
           <button type="button" class="input-view number zero">0</button>
-          <button type="button" class=" equal">=</button>
-          <button type="button" class="input-view operator full">/</button>
+          <button type="button" class="operator log">log</button>
+          <button id="equal" type="button" class=" equal computation">=</button>
         </li>
       </ul>
     </section>
