@@ -1,8 +1,10 @@
 :root {
   --black:#091413;
+  --light-black: #3a4242;
   --dark-green:#285A48;
   --green:#408A71;
   --light-green:#B0E4CC;
+  --monitor: #c7ecdb;
 }
 body {
   background-color: #333;
@@ -28,15 +30,15 @@ ul {
 }
 .table-container li {
   display: flex;
-  width: 100%;
+  justify-content: space-between;
 }
 ul li button {
   font-size: large;
   color: var(--black);
   font-weight: 500;
   background-color: var(--light-green);
-  width: 3.5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 3rem;
   margin: 0.2rem;
   cursor: pointer;
   border-radius: 0.4rem;
@@ -48,17 +50,38 @@ button:active {
 #monitor {
   margin-bottom: 1rem;
 }
-.back-display {
+.display {
   display: flex;
   width: 100%;
-  margin-bottom: 1rem;
 }
-.back-display input {
+.display input {
+  outline: none;
+  border: 0;
+  padding: 0.2rem 0;
+  border-radius: 0.4rem;
+}
+.display input {
+  background-color:var(--monitor);
   width: 100%;
-  height: 3rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align:right;
   padding-right: 0.4rem;
+  margin-top: 0;
+  color:var(--black);
+}
+.display.back input {
+  height: 2rem;
+  font-size: 1rem;
+  color: var(--light-black);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-left: 0.4rem;
+  text-align: left;
+}
+.display.result input {
+  font-size: 1.4rem;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 .fa-back {
    font-size: 1.4rem;

@@ -12,7 +12,10 @@
   <main>
     <div class="calculator-container">
     <section id="monitor">
-      <div class="back-display">
+      <div class="display back">
+       <input type="text">
+      </div>
+      <div id="result" class="display result">
        <input type="text" placeholder="0">
       </div>
     </section>
@@ -43,15 +46,15 @@
           <button type="button" class="input-view operator">*</button>
         </li>
           <li>
+          <button type="button" class="input-view number zero">0</button>
           <button type="button" class="input-view first-allowed bracket left-bracket">(</button>
           <button type="button" class="input-view bracket right-bracket">)</button>
-          <button type="button" class="input-view">&Sqrt;</button>
           <button type="button" class="input-view operator">/</button>
         </li>
         <li>
           <button type="button" class="input-view operator dot full">.</button>
-          <button type="button" class="input-view number zero">0</button>
-          <button type="button" class="operator log">log</button>
+          <button type="button" class="operator">&Sqrt;</button>
+          <button type="button" class="operator">log</button>
           <button id="equal" type="button" class=" equal computation">=</button>
         </li>
       </ul>

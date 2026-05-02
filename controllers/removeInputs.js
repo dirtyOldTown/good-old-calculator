@@ -1,6 +1,6 @@
 import { getStartingExpression } from "../data/expressions.js";
 
-export function removeIncorrectEntry(arr) {
+export function removeIncorrectEntry(arr, target) {
   removeIncorrectDot(arr);
 }
 
@@ -11,7 +11,7 @@ function removeIncorrectDot(arr) {
   }
   
   if (arr.length > 0 &&
-  /\b(\)\.)/g.test(getStartingExpression(arr))) {
+  /\b\)\./g.test(getStartingExpression(arr))) {
     arr.pop();
   }
 }

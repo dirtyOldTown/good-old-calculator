@@ -49,7 +49,7 @@ export class Calculator {
   }
 
   updateRoughExpression(arr) {
-    // Rough expression
+  // Rough expression
    let expression = this.getStartingExpression(arr);
    // Disable irregular zero
    if (/(?<!\.)\b0\d+/g.test(expression)) {

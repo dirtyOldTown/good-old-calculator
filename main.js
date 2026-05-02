@@ -1,10 +1,11 @@
 import { Calculator } from "./controllers/calculator.class.js";
 import { Operation } from "./controllers/operations.class.js";
-import { DISPLAY } from "./config/elements.js";
+import { DISPLAY_EXPRESSION, DISPLAY_RESULT, EQUAL } from "./config/elements.js";
+import { CLEAR } from "./config/operators.js";
 
-const mainTable = document.querySelector(".back-display input");
 let arr = [];
 let expression = "";
+let result = '';
 
 // Class Calculator initialization
 let calculator = new Calculator();
@@ -12,20 +13,35 @@ let calculator = new Calculator();
 document.addEventListener("click", (e) => {
   let target = e.target.closest(".input-view");
   if (!target) return;
+
   //Regulation when entering expression
   calculator.preventIncorrectEntry(arr, target);
   calculator.removeIncorrectEntry(arr);
   
   //Update rough expression before calculation
   expression = calculator.updateRoughExpression(arr);
-  mainTable.value = expression;
+  DISPLAY_EXPRESSION.value = expression;
+
+localStorage.setItem("expression", expression);
+  
 });
 
-// Regulation & Operation
+EQUAL.addEventListener("click", (e) => {
+  result = localStorage.getItem("expression");
+  DISPLAY_RESULT.value = eval(result);
+});
+
+
+// Class Operation initialization
 let operation = new Operation();
 
-operation.allClear(arr, expression, DISPLAY);
-operation.clear(arr, expression, DISPLAY)
+operation.allClear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
+operation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
+
+
+
+
+
 
 
 
