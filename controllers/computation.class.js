@@ -13,7 +13,7 @@ export class Computation extends Calculator {
     localStorage.removeItem(exp);
   }
 
-  #convertMathSymbol(exp) {
+  #convertSymbolToNumber(exp) {
     if (/\u03C0/gu.test(exp)) {
       exp = exp.replace(/\u03C0/gu, "3.14159")
     }
@@ -28,7 +28,7 @@ export class Computation extends Calculator {
   getResult(displayResult) {
     EQUAL.addEventListener("click", (e) => {
       let expression = this.#getExpression();
-      expression = this.#convertMathSymbol(expression);
+      expression = this.#convertSymbolToNumber(expression);
       
       try {
         let result = +eval(expression).toFixed(7);
