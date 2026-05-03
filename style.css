@@ -104,5 +104,8 @@ button:active {
   background-color:#b96746;
   color: #FFF;
 }
+.operator {
+  font-size: 1.4rem;
+}
 
 

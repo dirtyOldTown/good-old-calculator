@@ -25,40 +25,40 @@
     <section id="calculator-table">
       <ul class="table-container">
         <li>
-          <button id="all-clear" type="button" class="computation regulation">AC</button>
-          <button id="clear" type="button" class="computation clear"><i class="fas fa-backspace fa-back"></i></button>
-          <button type="button" class="input-view computation">&pi;</button>
-          <button type="button" class="input-view computation">e</button>
+          <button id="all-clear" type="button" class="computation regulation" data-value="AC">AC</button>
+          <button id="clear" type="button" class="computation clear" data-value="C"><i class="fas fa-backspace fa-back"></i></button>
+          <button type="button" class="input-view computation" data-value="&pi;">&pi;</button>
+          <button type="button" class="input-view computation" data-value="e">e</button>
         </li>
         <li>
-          <button type="button" class="input-view number">7</button>
-          <button type="button" class="input-view number">8</button>
-          <button type="button" class="input-view number">9</button>
-          <button type="button" class="input-view operator">+</button>
+          <button type="button" class="input-view number" data-value="7">7</button>
+          <button type="button" class="input-view number" data-value="8">8</button>
+          <button type="button" class="input-view number" data-value="9">9</button>
+          <button type="button" class="input-view operator" data-value="+">+</button>
         </li>
         <li>
-          <button type="button" class="input-view number">4</button>
-          <button type="button" class="input-view number">5</button>
-          <button type="button" class="input-view number">6</button>
-          <button type="button" class="input-view operator first-allowed full">-</button>
+          <button type="button" class="input-view number" data-value="4">4</button>
+          <button type="button" class="input-view number" data-value="5">5</button>
+          <button type="button" class="input-view number" data-value="6">6</button>
+          <button type="button" class="input-view operator first-allowed full" data-value="-">&minus;</button>
         </li>
         <li>
-          <button type="button" class="input-view number">1</button>
-          <button type="button" class="input-view number">2</button>
-          <button type="button" class="input-view number">3</button>
-          <button type="button" class="input-view operator">*</button>
+          <button type="button" class="input-view number" data-value="1">1</button>
+          <button type="button" class="input-view number" data-value="2">2</button>
+          <button type="button" class="input-view number" data-value="3">3</button>
+          <button type="button" class="input-view operator" data-value="*">&times;</button>
         </li>
           <li>
-          <button type="button" class="input-view number zero">0</button>
-          <button type="button" class="input-view first-allowed bracket left-bracket">(</button>
-          <button type="button" class="input-view bracket right-bracket">)</button>
-          <button type="button" class="input-view operator">/</button>
+          <button type="button" class="input-view number zero" data-value="0">0</button>
+          <button type="button" class="input-view first-allowed bracket left-bracket" data-value="(">(</button>
+          <button type="button" class="input-view bracket right-bracket" data-value=")">)</button>
+          <button type="button" class="input-view operator" data-value="/">&divide;</button>
         </li>
         <li>
-          <button type="button" class="input-view operator dot full">.</button>
-          <button type="button" class="operator">&Sqrt;</button>
-          <button type="button" class="operator">log</button>
-          <button id="equal" type="button" class=" equal computation">=</button>
+          <button type="button" class="input-view operator dot full" data-value=".">,</button>
+          <button type="button" data-value="&Sqrt;">&Sqrt;</button>
+          <button type="button" data-value="log">log</button>
+          <button id="equal" type="button" class=" equal computation" data-value="=">&equals;</button>
         </li>
       </ul>
     </section>

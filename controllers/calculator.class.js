@@ -1,7 +1,7 @@
 export class Calculator {
 
  getStartingExpression(arr) {
-    let newArr = arr.map(item => item.textContent);
+    let newArr = arr.map(item => item.dataset.value);
     return newArr.join("");
   }
   preventIncorrectEntry(arr, target) {
@@ -18,14 +18,14 @@ export class Calculator {
   }
   #preventIncorrectOperator(arr, target) {
   return arr.length > 0 && 
-  (/[\+\/\*\-\(\.]/g.test(arr.at(-1).textContent) &&
-  /[\+\/\*\-\)\.]/g.test(target.textContent)) &&
-   !(/[\(]/g.test( arr.at(-1).textContent) &&
-    /[\-]/g.test(target.textContent));
+  (/[\+\/\*\-\(\.]/g.test(arr.at(-1).dataset.value) &&
+  /[\+\/\*\-\)\.]/g.test(target.dataset.value)) &&
+   !(/[\(]/g.test( arr.at(-1).dataset.value) &&
+    /[\-]/g.test(target.dataset.value));
   }
   #preventIncorrectFirstEntry(arr, target) {
   return arr.length == 0 && 
-  /[\+\/\*\.)]/g.test(target.textContent)
+  /[\+\/\*\.)]/g.test(target.dataset.value)
   }
   
   removeIncorrectEntry(arr, target) {
