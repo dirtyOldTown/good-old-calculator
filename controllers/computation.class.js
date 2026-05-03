@@ -1,5 +1,6 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
+
 export class Computation extends Calculator {
   setExpression(exp) {
     localStorage.setItem("expression", exp);
