@@ -1,3 +1,2 @@
-export const DISPLAY_EXPRESSION = document.querySelector(".display.back input");
-export const DISPLAY_RESULT = document.querySelector("#result input");
-export const EQUAL = document.getElementById("equal");
+export const DISPLAY_EXPRESSION = document.getElementById("expression");
+export const DISPLAY_RESULT = document.getElementById("result");

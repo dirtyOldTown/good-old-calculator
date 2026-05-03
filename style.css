@@ -5,9 +5,11 @@
   --green:#408A71;
   --light-green:#B0E4CC;
   --monitor: #c7ecdb;
+  --equal-blue: #168aaa;
 }
 body {
   background-color: #333;
+  font-family: monospace;
 }
 main {
   width: 100%;
@@ -33,6 +35,7 @@ ul {
   justify-content: space-between;
 }
 ul li button {
+  font-family: Helvetica, sans-serif;
   font-size: large;
   color: var(--black);
   font-weight: 500;
@@ -42,6 +45,9 @@ ul li button {
   margin: 0.2rem;
   cursor: pointer;
   border-radius: 0.4rem;
+}
+#equal {
+  background-color: var(--equal-blue);
 }
 button:active {
   transform: translateY(1px);
@@ -69,7 +75,8 @@ button:active {
   margin-top: 0;
   color:var(--black);
 }
-.display.back input {
+#expression {
+  font-family: Helvetica, sans-serif;
   height: 2rem;
   font-size: 1rem;
   color: var(--light-black);
@@ -78,13 +85,15 @@ button:active {
   padding-left: 0.4rem;
   text-align: left;
 }
-.display.result input {
-  font-size: 1.4rem;
+#result {
+  font-family: 'Orbitron';
+  font-size: 1.2rem;
+  font-weight: 500;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
 .fa-back {
-   font-size: 1.4rem;
+  font-size: 1.4rem;
   color:#fff;
 }
 .computation {
@@ -92,7 +101,8 @@ button:active {
   color: #fff;
 }
 .regulation {
-  background-color:#b6694a;
+  background-color:#b96746;
   color: #FFF;
 }
+
 
