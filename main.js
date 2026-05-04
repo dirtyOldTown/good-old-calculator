@@ -9,7 +9,7 @@ let expression = "";
 let calculator = new Calculator();
 let computation = new Computation();
 
-document.addEventListener("click", (e) => {
+document.addEventListener("mousedown", (e) => {
   let target = e.target.closest(".input-view");
   if (!target) return;
 
@@ -30,6 +30,7 @@ document.addEventListener("click", (e) => {
 computation.getResult(DISPLAY_RESULT);
 computation.allClear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 computation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
+
 
 
 
