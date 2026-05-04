@@ -48,7 +48,6 @@ ul li button {
 }
 #equal {
   background-color: var(--equal-blue);
-  width: 75%;
 }
 button:active {
   transform: translateY(1px);

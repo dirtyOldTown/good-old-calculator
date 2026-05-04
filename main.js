@@ -9,7 +9,7 @@ let expression = "";
 let calculator = new Calculator();
 let computation = new Computation();
 
-document.addEventListener("mousedown", (e) => {
+document.addEventListener("click", (e) => {
   let target = e.target.closest(".input-view");
   if (!target) return;
 
