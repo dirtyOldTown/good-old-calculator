@@ -67,7 +67,7 @@ export class Calculation extends Calculator {
       } catch (e) {
         displayResult.style.color = "#b96746";
         console.log("Not-a-Number");
-        displayResult.value = "NaN [Fix Expression]";
+        displayResult.value = "NaN";
       }
     });
   }
@@ -84,7 +84,7 @@ export class Calculation extends Calculator {
 
   clear(arr, expression, displayExp, displayResult, isClicked) {
     CLEAR.onclick = () => {
-      arr.pop();
+      //arr.pop();
       displayExp.value = displayExp.value.slice(0, -1);
       this.setExpression(displayExp.value);
       if (displayExp.value == "") {
