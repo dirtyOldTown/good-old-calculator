@@ -1,13 +1,13 @@
 import { Calculator } from "./controllers/calculator.class.js";
-import { Computation } from "./controllers/computation.class.js";
+import { Calculation } from "./controllers/computation.class.js";
 import { DISPLAY_EXPRESSION, DISPLAY_RESULT } from "./config/elements.js";
-
+import { ADVANCED_OPERATORS } from "./config/operators.js";
 let arr = [];
-let expression = "";
+let expression = 0;
 
 // Class initialization
 let calculator = new Calculator();
-let computation = new Computation();
+let calculation = new Calculation();
 
 document.addEventListener("click", (e) => {
   let target = e.target.closest(".input-view");
@@ -22,18 +22,21 @@ document.addEventListener("click", (e) => {
   DISPLAY_EXPRESSION.value = expression;
   
   //Set expression in local storage
-  computation.setExpression(expression);
+  calculation.setExpression(expression);
 });
 
 // Computation
 
-computation.getResult(DISPLAY_RESULT);
-computation.allClear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
-computation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
+calculation.getResult(DISPLAY_RESULT);
+calculation.allClear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
+calculation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 
-
-
-
+// alert
+ADVANCED_OPERATORS.forEach(operator => {
+  operator.addEventListener("click", () => {
+    alert("Please close the parenthesis after entering the expression.\nDo not enter extra parenthesis for now.");
+  }, { once: true });
+});
 
 
 

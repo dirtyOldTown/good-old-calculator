@@ -19,7 +19,7 @@
        <input type="text" id="expression">
       </div>
       <div class="display result">
-       <input type="text" placeholder="0" id="result" value="0">
+       <input type="text" placeholder="0" id="result">
       </div>
     </section>
     <section id="calculator-table">
@@ -56,8 +56,8 @@
         </li>
         <li>
           <button type="button" class="input-view operator dot full" data-value=".">,</button>
-          <button type="button" data-value="&Sqrt;">&Sqrt;</button>
-          <button id="log" type="button" data-value="log">log</button>
+          <button id="sqrt" class="input-view advanced-operator" type="button" data-value="&Sqrt;">&Sqrt;</button>
+          <button id="log" class="input-view advanced-operator" type="button" data-value="log">log<sub>10</sub></button>
           <button id="equal" type="button" class=" equal computation" data-value="="><i class="fas fa-equals"></i></button>
         </li>
       </ul>

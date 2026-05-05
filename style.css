@@ -82,11 +82,14 @@ button:active {
   color: var(--light-black);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  padding-left: 0.4rem;
-  text-align: left;
+/*   padding-left: 0.4rem;
+  text-align: left; */
+  border-bottom: 0.1rem dotted grey;
 }
 #result {
   font-family: 'Orbitron';
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 1.2rem;
   font-weight: 500;
   border-top-right-radius: 0;
@@ -105,4 +108,6 @@ button:active {
   color: #FFF;
 }
 
-
+button > sub{
+  font-size: 0.6rem;
+}
