@@ -84,7 +84,7 @@ export class Calculation extends Calculator {
 
   clear(arr, expression, displayExp, displayResult, isClicked) {
     CLEAR.onclick = () => {
-      //arr.pop();
+      arr.pop();
       displayExp.value = displayExp.value.slice(0, -1);
       this.setExpression(displayExp.value);
       if (displayExp.value == "") {
