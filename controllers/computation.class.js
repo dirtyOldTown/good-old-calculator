@@ -31,9 +31,9 @@ export class Calculation extends Calculator {
     // Calculation of logarithms in expression
     if (isLogarithm(exp)) {
       try {
-        let matches = exp.matchAll(/(?<=log)\(.+?(\(.+?\))*.*\)/gu);
+        let matches = exp.matchAll(/(?<=log)\((?:[^()]|\([^()]*\))*\)/gu);
         for (let match of matches) {
-          exp = exp.replace(/log\(.+?(\(.+?\))*.*\)/u,  Math.log10(eval(match[0])));
+          exp = exp.replace(/log\((?:[^()]|\([^()]*\))*\)/u,  Math.log10(eval(match[0])));
         }
       } catch (e) {
         console.log("SHIT");
@@ -42,9 +42,9 @@ export class Calculation extends Calculator {
     // Calculation of square roots in expression
     if (isSquareRoot(exp)) {
       try {
-     let matches = exp.matchAll(/(?<=\u221A)\(.+?(\(.+?\))*.*\)/gu);
+      let matches = exp.matchAll(/(?<=\u221A)\((?:[^()]|\([^()]*\))*\)/gu);
         for (let match of matches) {
-       exp = exp.replace(/\u221A\(.+?(\(.+?\))*.*\)/u,  Math.sqrt(eval(match[0])));
+       exp = exp.replace(/\u221A\((?:[^()]|\([^()]*\))*\)/u,  Math.sqrt(eval(match[0])));
         }  
       } catch (e) {
         console.log("SHIT")

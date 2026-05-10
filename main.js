@@ -39,5 +39,4 @@ calculation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
   }, { once: true });
 }); */
 
-let exp = "(\u221a(3+5*(4+7)+9*(2+6)-55+8*(4+7)-8)*67)"
 
