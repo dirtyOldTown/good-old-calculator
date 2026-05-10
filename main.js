@@ -23,6 +23,7 @@ document.addEventListener("click", (e) => {
   
   //Set expression in local storage
   calculation.setExpression(expression);
+
 });
 
 // Computation
@@ -32,16 +33,11 @@ calculation.allClear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 calculation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 
 // alert
-ADVANCED_OPERATORS.forEach(operator => {
+/* ADVANCED_OPERATORS.forEach(operator => {
   operator.addEventListener("click", () => {
     alert("Please close the parenthesis after entering the expression.\nDo not enter extra parenthesis for now.");
   }, { once: true });
-});
+}); */
 
-
-
-
-
-
-
+let exp = "(\u221a(3+5*(4+7)+9*(2+6)-55+8*(4+7)-8)*67)"
 
