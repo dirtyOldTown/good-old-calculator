@@ -12,9 +12,6 @@ export class Calculator {
       case this.#preventIncorrectOperator(arr, target):
         return;
         break;
-     /*  case this.#preventIncorrectAdvancedOperator(arr, target):
-        return;
-        break; */
       default: 
         arr.push(target);
     }
@@ -26,11 +23,6 @@ export class Calculator {
    !(/[\(g\u221A]/gu.test( arr.at(-1).dataset.value) &&
     /[\-]/g.test(target.dataset.value));
   }
- /*   #preventIncorrectAdvancedOperator(arr, target) {
-  return arr.length > 0 && 
-  (/[g\u221A]/gu.test(arr.at(-1).dataset.value) &&
-  /[g\u221A]/g.test(target.dataset.value));
-  } */
   #preventIncorrectFirstEntry(arr, target) {
   return arr.length == 0 && 
   /[\+\/\*\.)]/g.test(target.dataset.value)
