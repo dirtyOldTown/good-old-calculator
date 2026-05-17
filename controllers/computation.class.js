@@ -1,6 +1,7 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
-import { isLogarithm, isSquareRoot, convertingSquareRootExpression, convertingLogaritmExpression} from "../middleware/conversionOperations.js";
+import { isLogarithm, isSquareRoot, convertingSquareRootExpression, 
+convertingLogaritmExpression} from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -47,6 +48,7 @@ export class Calculation extends Calculator {
       DISPLAY_EXPRESSION.value = expression;
       expression = this.#convertSymbolToNumber(expression);
       expression = this.#updateExpression(expression);
+  
       try {
         let result = +eval(expression).toFixed(7);
         displayResult.value = result;

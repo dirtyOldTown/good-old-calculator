@@ -32,6 +32,10 @@ calculation.getResult(DISPLAY_RESULT);
 calculation.allClear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 calculation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 
+// Prevent focus on display monitor
+DISPLAY_EXPRESSION.addEventListener("focus", () => DISPLAY_EXPRESSION.blur());
+DISPLAY_RESULT.addEventListener("focus", () => DISPLAY_RESULT.blur());
+
 // alert
 /* ADVANCED_OPERATORS.forEach(operator => {
   operator.addEventListener("click", () => {
@@ -39,20 +43,3 @@ calculation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
   }, { once: true });
 }); */
 
-/* let exp = "4+(\u221A(6+3+\u221A(49)))"
-        function express(exp) {
-             try {
-    let matches = exp.matchAll(/(?<=\u221A)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
-    for (let match of matches) {
-      if (match[0].includes("\u221A")) {
-       match[0] = express(match[0])
-      }
-      exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u,  Math.sqrt(eval(match[0])));
-    }  
-  
-    return exp;
-  } catch (err) {
-    console.log("Shit");
-  } 
-        }
-console.log(express(exp)) */
