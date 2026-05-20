@@ -20,10 +20,9 @@ document.addEventListener("click", (e) => {
   //Update rough expression before calculation
   expression = calculator.updateRoughExpression(arr);
   DISPLAY_EXPRESSION.value = expression;
-  
+
   //Set expression in local storage
   calculation.setExpression(expression);
-
 });
 
 // Computation
@@ -43,3 +42,18 @@ DISPLAY_RESULT.addEventListener("focus", () => DISPLAY_RESULT.blur());
   }, { once: true });
 }); */
 
+let exp = "5+9)";
+let regexp = /\)/g;
+let regexp2 = /\(/g;
+let len1 = exp.match(regexp) ?? [];
+
+let len2 = exp.match(regexp2) ?? [];
+
+if (len1.length > len2.length) {
+ console.log("SHIT");
+ let expArr = exp.split("");
+ expArr.pop();
+ exp = expArr.join("")
+
+}
+ console.log(exp)

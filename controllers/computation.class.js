@@ -9,15 +9,15 @@ export class Calculation extends Calculator {
     localStorage.setItem("expression", exp);
   }
 
-  #getExpression() {
+  getExpression() {
     return localStorage.getItem("expression");
   }
 
-  #removeExpression(exp) {
+  removeExpression(exp) {
     localStorage.removeItem(exp);
   }
 
-  #convertSymbolToNumber(exp) {
+  convertSymbolToNumber(exp) {
     // Convert symbol 'PI' to number
     if (/\u03C0/gu.test(exp)) {
       exp = exp.replace(/\u03C0/gu, Math.PI);
@@ -29,7 +29,7 @@ export class Calculation extends Calculator {
     return exp; 
   }
 
-  #updateExpression(exp) {
+  updateExpression(exp) {
     // Calculation of logarithms in expression
     if (isLogarithm(exp)) {
      exp = convertingLogaritmExpression(exp);
@@ -44,10 +44,10 @@ export class Calculation extends Calculator {
 
   getResult(displayResult) {
     EQUAL.addEventListener("click", (e) => {
-      let expression = this.#getExpression();
+      let expression = this.getExpression();
       DISPLAY_EXPRESSION.value = expression;
-      expression = this.#convertSymbolToNumber(expression);
-      expression = this.#updateExpression(expression);
+      expression = this.convertSymbolToNumber(expression);
+      expression = this.updateExpression(expression);
   
       try {
         let result = +eval(expression).toFixed(7);

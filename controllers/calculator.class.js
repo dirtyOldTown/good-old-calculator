@@ -30,6 +30,16 @@ export class Calculator {
   
   removeIncorrectEntry(arr, target) {
     this.#removeIncorrectDot(arr, target);
+    this.#removeIncorectRightBracket(arr, target);
+  }
+
+  #removeIncorectRightBracket(arr, target) {
+    let leftBrackets = this.getStartingExpression(arr).match(/\(/g) ?? [];
+    let rightBrackets = this.getStartingExpression(arr).match(/\)/g) ?? [];
+
+    if (leftBrackets.length < rightBrackets.length) {
+      arr.pop()
+    }
   }
   #removeIncorrectDot(arr, target) {
     if (arr.length > 0 &&
