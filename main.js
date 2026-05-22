@@ -15,7 +15,7 @@ document.addEventListener("click", (e) => {
 
   //Regulation when entering expression
   calculator.preventIncorrectEntry(arr, target);
-  calculator.removeIncorrectEntry(arr);
+  calculator.removeIncorrectEntry(arr, target);
   
   //Update rough expression before calculation
   expression = calculator.updateRoughExpression(arr);
@@ -24,10 +24,9 @@ document.addEventListener("click", (e) => {
   //Set expression in local storage
   calculation.setExpression(expression);
 });
-
 // Computation
 
-calculation.getResult(DISPLAY_RESULT);
+calculation.getResult(DISPLAY_RESULT, DISPLAY_EXPRESSION);
 calculation.allClear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 calculation.clear(arr, expression, DISPLAY_EXPRESSION, DISPLAY_RESULT);
 
@@ -42,18 +41,3 @@ DISPLAY_RESULT.addEventListener("focus", () => DISPLAY_RESULT.blur());
   }, { once: true });
 }); */
 
-let exp = "5+9)";
-let regexp = /\)/g;
-let regexp2 = /\(/g;
-let len1 = exp.match(regexp) ?? [];
-
-let len2 = exp.match(regexp2) ?? [];
-
-if (len1.length > len2.length) {
- console.log("SHIT");
- let expArr = exp.split("");
- expArr.pop();
- exp = expArr.join("")
-
-}
- console.log(exp)

@@ -30,17 +30,8 @@ export class Calculator {
   
   removeIncorrectEntry(arr, target) {
     this.#removeIncorrectDot(arr, target);
-    this.#removeIncorectRightBracket(arr, target);
   }
 
-  #removeIncorectRightBracket(arr, target) {
-    let leftBrackets = this.getStartingExpression(arr).match(/\(/g) ?? [];
-    let rightBrackets = this.getStartingExpression(arr).match(/\)/g) ?? [];
-
-    if (leftBrackets.length < rightBrackets.length) {
-      arr.pop()
-    }
-  }
   #removeIncorrectDot(arr, target) {
     if (arr.length > 0 &&
     /\b(\d+\.\d+\.)/g.test(this.getStartingExpression(arr))) {
@@ -57,8 +48,19 @@ export class Calculator {
       arr.pop();
     }
   }
+  #removeIncorectRightBracket(arr, expression) {
+    let leftBrackets = expression.match(/\(/g)?.length ?? 0;
+    let rightBrackets = expression.match(/\)/g)?.length ?? 0;
 
-  updateRoughExpression(arr) {
+    if (rightBrackets > leftBrackets) {
+      arr.pop();
+      expression = expression.slice(0, -1);
+    }
+
+    return expression;
+  }
+
+  updateRoughExpression(arr, target) {
   // Rough expression
    let expression = this.getStartingExpression(arr);
    // Disable irregular zero
@@ -80,7 +82,11 @@ export class Calculator {
   if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Al\d]/gu.test(expression)) {
     expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Al\d]/gu, "*$&");
   }
+  // Final update
+  expression = this.#removeIncorectRightBracket(arr, expression);
 
   return expression;
   }
 }
+
+
