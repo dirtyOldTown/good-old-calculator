@@ -1,7 +1,7 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
 import { isLogarithm, isSquareRoot, convertingSquareRootExpression, 
-convertingLogaritmExpression} from "../middleware/conversionOperations.js";
+  convertingLogaritmExpression } from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -30,13 +30,13 @@ export class Calculation extends Calculator {
   }
 
   updateExpression(exp) {
-    // Calculation of logarithms in expression
-    if (isLogarithm(exp)) {
-     exp = convertingLogaritmExpression(exp);
-    }
     // Calculation of square roots in expression
     if (isSquareRoot(exp)) {
       exp = convertingSquareRootExpression(exp);
+    }
+    // Calculation of logarithms in expression
+    if (isLogarithm(exp)) {
+     exp = convertingLogaritmExpression(exp);
     }
 
     return exp;
@@ -51,7 +51,7 @@ export class Calculation extends Calculator {
   
       try {
         let result = +eval(expression).toFixed(7);
-        displayResult.value = result;
+        displayResult.value = "=" + result;
       } catch (e) {
         console.log("Not-a-Number");
         displayResult.value = "NaN";
@@ -64,7 +64,7 @@ export class Calculation extends Calculator {
       arr.length = 0;
       expression = "";
       displayExp.value = "";
-      displayResult.value = "0";
+      displayResult.value = "";
       this.setExpression("0");
     }
   }

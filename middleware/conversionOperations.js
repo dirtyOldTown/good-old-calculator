@@ -12,6 +12,8 @@ export function convertingSquareRootExpression(exp) {
     for (let match of matches) {
       if (match[0].includes("\u221A")) {
         match[0] = convertingSquareRootExpression(match[0]);
+      } else if (match[0].includes("log")) {
+        match[0] = convertingLogaritmExpression(match[0]);
       }
       exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sqrt(eval(match[0])));
     }  
