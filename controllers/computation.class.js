@@ -29,9 +29,10 @@ export class Calculation extends Calculator {
   }
 
   updateExpression(exp) {
-   while(/\u221A\(.+?\)/u.test(exp)) {
+    while(/\u221A\(.+?\)/u.test(exp)) {
       exp = convertingSquareRootExpression(exp);
     } 
+
     while(/log\(.+?\)/u.test(exp)) {
       exp = convertingLogaritmExpression(exp);
     }

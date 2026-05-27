@@ -67,22 +67,28 @@ export class Calculator {
    if (/(?<!\.)\b0\d+/g.test(expression)) {
    expression = expression.replace(/(?<!\.)\b0\d+/g, "0");
   } 
-  // Adding a multiplication sign after 
+  // Adding a multiplication sign after right parenthesis
   if(/(?<=\))[\d\(\u03C0\u0065\u221Al]/gu.test(expression)) {
     expression = expression.replace(/(?<=\))[\d\(\u03C0\u0065\u221Al]/gu, "*$&");
   }
+  //Adding a left parenthesis after advanced operators
    if(/log|\u221A/g.test(expression)) {
     expression = expression.replace(/log|\u221A/g, "$&(");
   }
-  // Adding a multiplication sign before 
+  // Adding a multiplication sign between numbers and advanced operators
   if(/(?<=\d)[\(\u03C0\u0065\u221Al]/gu.test(expression)) {
     expression = expression.replace(/(?<=\d)[\(\u03C0\u0065\u221Al]/gu, "*$&");
   }
-
+  // Adding a multiplication sign between advanced operators
   if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Al\d]/gu.test(expression)) {
     expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Al\d]/gu, "*$&");
   }
-  // Final update
+  // Deleting a period after the right parenthesis
+  if (/\)+\./g.test(expression)) {
+    arr.pop();
+    expression = expression.slice(0, -1);
+  }
+  // Deleting an extra right parenthesis
   expression = this.#removeIncorectRightBracket(arr, expression);
 
   return expression;
