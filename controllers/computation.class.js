@@ -1,7 +1,6 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
-import { isLogarithm, isSquareRoot, convertingSquareRootExpression, 
-  convertingLogaritmExpression } from "../middleware/conversionOperations.js";
+import { convertingSquareRootExpression, convertingLogaritmExpression } from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -30,17 +29,16 @@ export class Calculation extends Calculator {
   }
 
   updateExpression(exp) {
-    // Calculation of square roots in expression
-    if (isSquareRoot(exp)) {
+   while(/\u221A\(.+?\)/u.test(exp)) {
       exp = convertingSquareRootExpression(exp);
+    } 
+    while(/log\(.+?\)/u.test(exp)) {
+      exp = convertingLogaritmExpression(exp);
     }
-    // Calculation of logarithms in expression
-    if (isLogarithm(exp)) {
-     exp = convertingLogaritmExpression(exp);
-    }
-
+    
     return exp;
   }
+
 
   getResult(displayResult) {
     EQUAL.addEventListener("click", (e) => {
