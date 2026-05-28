@@ -13,7 +13,6 @@ export function convertingSquareRootExpression(exp) {
       exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sqrt(eval(match[index])));
     }
     
-
     return exp;
 
   } catch (err) {
@@ -35,7 +34,7 @@ export function convertingLogaritmExpression(exp) {
     
       exp = exp.replace(/log\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log10(eval(match[index])));
     }  
-  
+
     return exp;
 
   } catch (err) {
