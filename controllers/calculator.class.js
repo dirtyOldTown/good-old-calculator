@@ -18,9 +18,9 @@ export class Calculator {
   }
   #preventIncorrectOperator(arr, target) {
   return arr.length > 0 && 
-  (/[\+\/\*\-\(\.gn\u221A]/gu.test(arr.at(-1).dataset.value) &&
+  (/[\+\/\*\-\(\.gns\u221A]/gu.test(arr.at(-1).dataset.value) &&
   /[\+\/\*\-\)\.]/g.test(target.dataset.value)) &&
-   !(/[\(gn\u221A]/gu.test( arr.at(-1).dataset.value) &&
+   !(/[\(gns\u221A]/gu.test( arr.at(-1).dataset.value) &&
     /[\-]/g.test(target.dataset.value));
   }
   #preventIncorrectFirstEntry(arr, target) {
@@ -68,20 +68,20 @@ export class Calculator {
    expression = expression.replace(/(?<!\.)\b0\d+/g, "0");
   } 
   // Adding a multiplication sign after right parenthesis
-  if(/(?<=\))[\d\(\u03C0\u0065\u221Als]/gu.test(expression)) {
-    expression = expression.replace(/(?<=\))[\d\(\u03C0\u0065\u221Als]/gu, "*$&");
+  if(/(?<=\))[\d\(\u03C0\u0065\u221Alsc]/gu.test(expression)) {
+    expression = expression.replace(/(?<=\))[\d\(\u03C0\u0065\u221Alsc]/gu, "*$&");
   }
   //Adding a left parenthesis after advanced operators
-   if(/log|sin|\u221A/g.test(expression)) {
-    expression = expression.replace(/log|sin|\u221A/g, "$&(");
+   if(/log|sin|cos|\u221A/g.test(expression)) {
+    expression = expression.replace(/log|sin|cos|\u221A/g, "$&(");
   }
   // Adding a multiplication sign between numbers and advanced operators
-  if(/(?<=\d)[\(\u03C0\u0065\u221Als]/gu.test(expression)) {
-    expression = expression.replace(/(?<=\d)[\(\u03C0\u0065\u221Als]/gu, "*$&");
+  if(/(?<=\d)[\(\u03C0\u0065\u221Alsc]/gu.test(expression)) {
+    expression = expression.replace(/(?<=\d)[\(\u03C0\u0065\u221Alsc]/gu, "*$&");
   }
   // Adding a multiplication sign between advanced operators
-  if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Als\d]/gu.test(expression)) {
-    expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Als\d]/gu, "*$&");
+  if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Alsc\d]/gu.test(expression)) {
+    expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Alsc\d]/gu, "*$&");
   }
   // Deleting a period after the right parenthesis
   if (/\)+\./g.test(expression)) {

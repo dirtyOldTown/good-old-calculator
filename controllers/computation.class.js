@@ -1,7 +1,7 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
-import { convertingSquareRootExpression, convertingLogaritmExpression,
-  convertingSinusExpression } from "../middleware/conversionOperations.js";
+import { processingExpressionsUnderSquareRoot, processingLogaritmicExpressions,
+  processingSineExpressions, processingCosineExpressions, update } from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -30,18 +30,11 @@ export class Calculation extends Calculator {
   }
 
   updateExpression(exp) {
-    while(/\u221A\(.+?\)/u.test(exp)) {
-      exp = convertingSquareRootExpression(exp);
-    } 
+    exp = update(/\u221A\(.+?\)/u, exp, processingExpressionsUnderSquareRoot);
+    exp = update(/log\(.+?\)/u, exp, processingLogaritmicExpressions);
+    exp = update(/sin\(.+?\)/u, exp, processingSineExpressions);
+    exp = update(/cos\(.+?\)/u, exp, processingCosineExpressions);
 
-    while(/log\(.+?\)/u.test(exp)) {
-      exp = convertingLogaritmExpression(exp);
-    }
-    
-    while(/sin\(.+?\)/u.test(exp)) {
-      exp = convertingSinusExpression(exp);
-    }
-    
     return exp;
   }
 
