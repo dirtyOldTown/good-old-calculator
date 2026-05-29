@@ -1,6 +1,7 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
-import { convertingSquareRootExpression, convertingLogaritmExpression } from "../middleware/conversionOperations.js";
+import { convertingSquareRootExpression, convertingLogaritmExpression,
+  convertingSinusExpression } from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -35,6 +36,10 @@ export class Calculation extends Calculator {
 
     while(/log\(.+?\)/u.test(exp)) {
       exp = convertingLogaritmExpression(exp);
+    }
+    
+    while(/sin\(.+?\)/u.test(exp)) {
+      exp = convertingSinusExpression(exp);
     }
     
     return exp;
