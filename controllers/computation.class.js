@@ -1,7 +1,7 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
 import { processingExpressionsUnderSquareRoot, processingLogaritmicExpressions,
-  processingSineExpressions, processingCosineExpressions, update } from "../middleware/conversionOperations.js";
+  processingSineExpressions, processingCosineExpressions, convertSymbolToNumber } from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -16,24 +16,18 @@ export class Calculation extends Calculator {
   removeExpression(exp) {
     localStorage.removeItem(exp);
   }
+  #update(regexp, exp, callback) {
+    while(regexp.test(exp)) {
+    exp = callback(exp);
+  } 
 
-  convertSymbolToNumber(exp) {
-    // Convert symbol 'PI' to number
-    if (/\u03C0/gu.test(exp)) {
-      exp = exp.replace(/\u03C0/gu, Math.PI);
-    }
-    // Convert symbol 'e' to number
-    if (/e/g.test(exp)) {
-      exp = exp.replace(/e/g, Math.E);
-    }
-    return exp; 
-  }
-
+  return exp;
+}
   updateExpression(exp) {
-    exp = update(/\u221A\(.+?\)/u, exp, processingExpressionsUnderSquareRoot);
-    exp = update(/log\(.+?\)/u, exp, processingLogaritmicExpressions);
-    exp = update(/sin\(.+?\)/u, exp, processingSineExpressions);
-    exp = update(/cos\(.+?\)/u, exp, processingCosineExpressions);
+    exp = this.#update(/\u221A\(.+?\)/u, exp, processingExpressionsUnderSquareRoot);
+    exp = this.#update(/log\(.+?\)/u, exp, processingLogaritmicExpressions);
+    exp = this.#update(/sin\(.+?\)/u, exp, processingSineExpressions);
+    exp = this.#update(/cos\(.+?\)/u, exp, processingCosineExpressions);
 
     return exp;
   }
@@ -43,7 +37,7 @@ export class Calculation extends Calculator {
     EQUAL.addEventListener("click", (e) => {
       let expression = this.getExpression();
       DISPLAY_EXPRESSION.value = expression;
-      expression = this.convertSymbolToNumber(expression);
+      expression = convertSymbolToNumber(expression);
       expression = this.updateExpression(expression);
   
       try {

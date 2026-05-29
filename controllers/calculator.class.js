@@ -29,35 +29,16 @@ export class Calculator {
   }
   
   removeIncorrectEntry(arr, target) {
-    this.#removeIncorrectDot(arr, target);
+    this.#removeIncorrectPeriod(arr, /\b(\d+\.\d+\.)/g, target, this.getStartingExpression);
+    this.#removeIncorrectPeriod(arr, /[\p{L}\u221A][\.]|\.[\p{L}\u221A]|[\p{L}\u221A]\)\./gu, 
+      target, this.getStartingExpression);
+    // this.#removeIncorrectPeriod(arr, target);
   }
-
-  #removeIncorrectDot(arr, target) {
+  #removeIncorrectPeriod(arr, regexp, target, callback) {
     if (arr.length > 0 &&
-    /\b(\d+\.\d+\.)/g.test(this.getStartingExpression(arr))) {
+      regexp.test(callback(arr))) {
       arr.pop();
     }
-    
-    if (arr.length > 0 &&
-    /\b(\)\.)/g.test(this.getStartingExpression(arr))) {
-      arr.pop();
-    }
-
-    if (arr.length > 0 &&
-    /[\p{L}\u221A][\.]|\.[\p{L}\u221A]|[\p{L}\u221A]\)\./gu.test(this.getStartingExpression(arr))) {
-      arr.pop();
-    }
-  }
-  #removeIncorectRightBracket(arr, expression) {
-    let leftBrackets = expression.match(/\(/g)?.length ?? 0;
-    let rightBrackets = expression.match(/\)/g)?.length ?? 0;
-
-    if (rightBrackets > leftBrackets) {
-      arr.pop();
-      expression = expression.slice(0, -1);
-    }
-
-    return expression;
   }
 
   updateRoughExpression(arr, target) {
@@ -92,6 +73,17 @@ export class Calculator {
   expression = this.#removeIncorectRightBracket(arr, expression);
 
   return expression;
+  }
+  #removeIncorectRightBracket(arr, expression) {
+    let leftBrackets = expression.match(/\(/g)?.length ?? 0;
+    let rightBrackets = expression.match(/\)/g)?.length ?? 0;
+
+    if (rightBrackets > leftBrackets) {
+      arr.pop();
+      expression = expression.slice(0, -1);
+    }
+
+    return expression;
   }
 }
 

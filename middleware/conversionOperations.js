@@ -4,10 +4,14 @@ export function processingExpressionsUnderSquareRoot(exp) {
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
-      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", processingExpressionsUnderSquareRoot);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "log", processingLogaritmicExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", processingSineExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
+        processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
+        processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
+        processingSineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
+        processingCosineExpressions);
  
       exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sqrt(eval(matchingExpressionFound)));
     }
@@ -26,10 +30,14 @@ export function processingLogaritmicExpressions(exp) {
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
-      matchingExpressionFound = solvingIntermediateExpressions(match, "log", processingLogaritmicExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", processingExpressionsUnderSquareRoot);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", processingSineExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
+        processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
+        processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
+        processingSineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
+        processingCosineExpressions);
     
       exp = exp.replace(/log\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log10(eval(matchingExpressionFound)));
     }  
@@ -47,10 +55,14 @@ export function processingSineExpressions(exp) {
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
-      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", processingSineExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", processingExpressionsUnderSquareRoot);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "log", processingLogaritmicExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
+        processingSineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
+        processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
+        processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
+        processingCosineExpressions);
     
       exp = exp.replace(/sin\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sin(eval(matchingExpressionFound)));
     }  
@@ -67,10 +79,14 @@ export function processingCosineExpressions(exp) {
     for (let match of matches) {
       let matchingExpressionFound = match[0];
       
-      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", processingCosineExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", processingExpressionsUnderSquareRoot);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "log", processingLogaritmicExpressions);
-      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", processingSineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
+        processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
+        processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
+        processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
+        processingSineExpressions);
     
       exp = exp.replace(/cos\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.cos(eval(matchingExpressionFound)));
     }  
@@ -90,11 +106,15 @@ function solvingIntermediateExpressions(match, symbol, callback) {
   return match[0];
 }
 
-// Final update expression middleware
-export function update(regexp, exp, callback) {
-  while(regexp.test(exp)) {
-    exp = callback(exp);
-  } 
+export function convertSymbolToNumber(exp) {
+    // Convert symbol 'PI' to number
+    if (/\u03C0/gu.test(exp)) {
+      exp = exp.replace(/\u03C0/gu, Math.PI);
+    }
+    // Convert symbol 'e' to number
+    if (/e/g.test(exp)) {
+      exp = exp.replace(/e/g, Math.E);
+    }
+    return exp; 
+  }
 
-  return exp;
-}
