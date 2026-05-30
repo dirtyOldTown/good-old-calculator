@@ -1,7 +1,9 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
 import { processingExpressionsUnderSquareRoot, processingLogaritmicExpressions,
-  processingSineExpressions, processingCosineExpressions, convertSymbolToNumber } from "../middleware/conversionOperations.js";
+  processingSineExpressions, processingCosineExpressions, convertSymbolToNumber,
+  processingNaturalLogaritmicExpressions, processingExpressionsUnderCubeRoot } 
+  from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -25,7 +27,9 @@ export class Calculation extends Calculator {
 }
   updateExpression(exp) {
     exp = this.#update(/\u221A\(.+?\)/u, exp, processingExpressionsUnderSquareRoot);
+    exp = this.#update(/\u221B\(.+?\)/u, exp, processingExpressionsUnderCubeRoot);
     exp = this.#update(/log\(.+?\)/u, exp, processingLogaritmicExpressions);
+    exp = this.#update(/ln\(.+?\)/u, exp, processingNaturalLogaritmicExpressions);
     exp = this.#update(/sin\(.+?\)/u, exp, processingSineExpressions);
     exp = this.#update(/cos\(.+?\)/u, exp, processingCosineExpressions);
 

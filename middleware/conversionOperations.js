@@ -6,8 +6,12 @@ export function processingExpressionsUnderSquareRoot(exp) {
 
       matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
         processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221B", 
+        processingExpressionsUnderCubeRoot);
       matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
         processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "ln", 
+        processingNaturalLogaritmicExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
         processingSineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
@@ -16,7 +20,35 @@ export function processingExpressionsUnderSquareRoot(exp) {
       exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sqrt(eval(matchingExpressionFound)));
     }
     
+    return exp;
 
+  } catch (err) {
+    console.log("Not a number");
+  } 
+}
+
+export function processingExpressionsUnderCubeRoot(exp) {
+  try {
+    let matches = exp.matchAll(/(?<=\u221B)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    for (let match of matches) {
+      let matchingExpressionFound = match[0];
+
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221B", 
+        processingExpressionsUnderCubeRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
+        processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
+        processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "ln", 
+        processingNaturalLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
+        processingSineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
+        processingCosineExpressions);
+ 
+      exp = exp.replace(/\u221B\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.cbrt(eval(matchingExpressionFound)));
+    }
+    
     return exp;
 
   } catch (err) {
@@ -32,14 +64,46 @@ export function processingLogaritmicExpressions(exp) {
 
       matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
         processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "ln", 
+        processingNaturalLogaritmicExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
         processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221B", 
+        processingExpressionsUnderCubeRoot);
       matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
         processingSineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
         processingCosineExpressions);
     
       exp = exp.replace(/log\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log10(eval(matchingExpressionFound)));
+    }  
+  
+    return exp;
+
+  } catch (err) {
+    console.log("Not a number");
+  } 
+}
+export function processingNaturalLogaritmicExpressions(exp) {
+  try {
+    let matches = exp.matchAll(/(?<=ln)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    for (let match of matches) {
+      let matchingExpressionFound = match[0];
+      
+      matchingExpressionFound = solvingIntermediateExpressions(match, "ln", 
+        processingNaturalLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
+        processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
+        processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221B", 
+        processingExpressionsUnderCubeRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
+        processingSineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
+        processingCosineExpressions);
+    
+      exp = exp.replace(/ln\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log(eval(matchingExpressionFound)));
     }  
   
     return exp;
@@ -59,8 +123,12 @@ export function processingSineExpressions(exp) {
         processingSineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
         processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221B", 
+        processingExpressionsUnderCubeRoot);
       matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
         processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "ln", 
+        processingNaturalLogaritmicExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
         processingCosineExpressions);
     
@@ -83,8 +151,12 @@ export function processingCosineExpressions(exp) {
         processingCosineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
         processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221B", 
+        processingExpressionsUnderCubeRoot);
       matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
         processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "ln", 
+        processingNaturalLogaritmicExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
         processingSineExpressions);
     
