@@ -40,14 +40,16 @@ ul li button {
   color: var(--black);
   font-weight: 500;
   background-color: var(--light-green);
-  width: 4.2rem;
+  width: 4rem;
   height: 3rem;
   margin: 0.2rem;
   cursor: pointer;
   border-radius: 0.4rem;
+  flex: 1;
 }
 #equal {
   background-color: var(--equal-blue);
+  flex: 2;
 }
 button:active {
   transform: translateY(1px);
@@ -101,5 +103,22 @@ button:active {
 .regulation {
   background-color:#b96746;
   color: #FFF;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    margin: 0;
+  }
+  main {
+    height: 100%;
+  }
+  .calculator-container {
+    width: 90%;
+    min-height: 94vh;
+  }
+  .table-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 

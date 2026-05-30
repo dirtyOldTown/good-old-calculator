@@ -1,6 +1,9 @@
 import { Calculator } from "./calculator.class.js";
 import { EQUAL, ALL_CLEAR, CLEAR } from "../config/operators.js";
-import { convertingSquareRootExpression, convertingLogaritmExpression } from "../middleware/conversionOperations.js";
+import { processingExpressionsUnderSquareRoot, processingLogaritmicExpressions,
+  processingSineExpressions, processingCosineExpressions, convertSymbolToNumber,
+  processingNaturalLogaritmicExpressions, processingExpressionsUnderCubeRoot } 
+  from "../middleware/conversionOperations.js";
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
@@ -15,28 +18,21 @@ export class Calculation extends Calculator {
   removeExpression(exp) {
     localStorage.removeItem(exp);
   }
+  #update(regexp, exp, callback) {
+    while(regexp.test(exp)) {
+    exp = callback(exp);
+  } 
 
-  convertSymbolToNumber(exp) {
-    // Convert symbol 'PI' to number
-    if (/\u03C0/gu.test(exp)) {
-      exp = exp.replace(/\u03C0/gu, Math.PI);
-    }
-    // Convert symbol 'e' to number
-    if (/e/g.test(exp)) {
-      exp = exp.replace(/e/g, Math.E);
-    }
-    return exp; 
-  }
-
+  return exp;
+}
   updateExpression(exp) {
-    while(/\u221A\(.+?\)/u.test(exp)) {
-      exp = convertingSquareRootExpression(exp);
-    } 
+    exp = this.#update(/\u221A\(.+?\)/u, exp, processingExpressionsUnderSquareRoot);
+    exp = this.#update(/\u221B\(.+?\)/u, exp, processingExpressionsUnderCubeRoot);
+    exp = this.#update(/log\(.+?\)/u, exp, processingLogaritmicExpressions);
+    exp = this.#update(/ln\(.+?\)/u, exp, processingNaturalLogaritmicExpressions);
+    exp = this.#update(/sin\(.+?\)/u, exp, processingSineExpressions);
+    exp = this.#update(/cos\(.+?\)/u, exp, processingCosineExpressions);
 
-    while(/log\(.+?\)/u.test(exp)) {
-      exp = convertingLogaritmExpression(exp);
-    }
-    
     return exp;
   }
 
@@ -45,9 +41,8 @@ export class Calculation extends Calculator {
     EQUAL.addEventListener("click", (e) => {
       let expression = this.getExpression();
       DISPLAY_EXPRESSION.value = expression;
-      expression = this.convertSymbolToNumber(expression);
+      expression = convertSymbolToNumber(expression);
       expression = this.updateExpression(expression);
-  
       try {
         let result = +eval(expression).toFixed(7);
         displayResult.value = "=" + result;
