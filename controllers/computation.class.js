@@ -39,7 +39,6 @@ export class Calculation extends Calculator {
       DISPLAY_EXPRESSION.value = expression;
       expression = convertSymbolToNumber(expression);
       expression = this.updateExpression(expression);
-  
       try {
         let result = +eval(expression).toFixed(7);
         displayResult.value = "=" + result;

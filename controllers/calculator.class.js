@@ -17,10 +17,10 @@ export class Calculator {
     }
   }
   #preventIncorrectOperator(arr, target) {
-  return arr.length > 0 && 
-  (/[\+\/\*\-\(\.gns\u221A]/gu.test(arr.at(-1).dataset.value) &&
-  /[\+\/\*\-\)\.]/g.test(target.dataset.value)) &&
-   !(/[\(gns\u221A]/gu.test( arr.at(-1).dataset.value) &&
+    return arr.length > 0 && 
+    (/[\+\/\*\-\(\.gns\u221A]/gu.test(arr.at(-1).dataset.value) &&
+    /[\+\/\*\-\)\.]/g.test(target.dataset.value)) &&
+    !(/[\(gns\u221A]/gu.test( arr.at(-1).dataset.value) &&
     /[\-]/g.test(target.dataset.value));
   }
   #preventIncorrectFirstEntry(arr, target) {
@@ -32,7 +32,6 @@ export class Calculator {
     this.#removeIncorrectPeriod(arr, /\b(\d+\.\d+\.)/g, target, this.getStartingExpression);
     this.#removeIncorrectPeriod(arr, /[\p{L}\u221A][\.]|\.[\p{L}\u221A]|[\p{L}\u221A]\)\./gu, 
       target, this.getStartingExpression);
-    // this.#removeIncorrectPeriod(arr, target);
   }
   #removeIncorrectPeriod(arr, regexp, target, callback) {
     if (arr.length > 0 &&
@@ -42,7 +41,7 @@ export class Calculator {
   }
 
   updateRoughExpression(arr, target) {
-  // Rough expression
+  // Get rough expression
    let expression = this.getStartingExpression(arr);
    // Disable irregular zero
    if (/(?<!\.)\b0\d+/g.test(expression)) {
@@ -64,17 +63,13 @@ export class Calculator {
   if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Alsc\d]/gu.test(expression)) {
     expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221Alsc\d]/gu, "*$&");
   }
-  // Deleting a period after the right parenthesis
-  if (/\)+\./g.test(expression)) {
-    arr.pop();
-    expression = expression.slice(0, -1);
-  }
-  // Deleting an extra right parenthesis
-  expression = this.#removeIncorectRightBracket(arr, expression);
+
+  expression = this.#fixParentheticalExpression(arr, expression);
 
   return expression;
   }
-  #removeIncorectRightBracket(arr, expression) {
+  #fixParentheticalExpression(arr, expression) {
+    // Deleting an extra right parenthesis
     let leftBrackets = expression.match(/\(/g)?.length ?? 0;
     let rightBrackets = expression.match(/\)/g)?.length ?? 0;
 
@@ -82,6 +77,12 @@ export class Calculator {
       arr.pop();
       expression = expression.slice(0, -1);
     }
+
+    // Deleting a period after the right parenthesis
+    if (/\)+\./g.test(expression)) {
+      arr.pop();
+      expression = expression.slice(0, -1);
+  }
 
     return expression;
   }
