@@ -16,10 +16,12 @@ export function processingExpressionsUnderSquareRoot(exp) {
         processingSineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
         processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
+        processingTangentExpressions);
  
       exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sqrt(eval(matchingExpressionFound)));
     }
-    
+
     return exp;
 
   } catch (err) {
@@ -45,6 +47,8 @@ export function processingExpressionsUnderCubeRoot(exp) {
         processingSineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
         processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
+        processingTangentExpressions);
  
       exp = exp.replace(/\u221B\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.cbrt(eval(matchingExpressionFound)));
     }
@@ -74,6 +78,8 @@ export function processingLogaritmicExpressions(exp) {
         processingSineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
         processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
+         processingTangentExpressions);
     
       exp = exp.replace(/log\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log10(eval(matchingExpressionFound)));
     }  
@@ -102,6 +108,8 @@ export function processingNaturalLogaritmicExpressions(exp) {
         processingSineExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
         processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
+         processingTangentExpressions);
     
       exp = exp.replace(/ln\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log(eval(matchingExpressionFound)));
     }  
@@ -131,6 +139,8 @@ export function processingSineExpressions(exp) {
         processingNaturalLogaritmicExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
         processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
+        processingTangentExpressions);
     
       exp = exp.replace(/sin\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sin(eval(matchingExpressionFound)));
     }  
@@ -159,6 +169,8 @@ export function processingCosineExpressions(exp) {
         processingNaturalLogaritmicExpressions);
       matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
         processingSineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
+         processingTangentExpressions);
     
       exp = exp.replace(/cos\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.cos(eval(matchingExpressionFound)));
     }  
@@ -170,6 +182,36 @@ export function processingCosineExpressions(exp) {
   } 
 }
 
+export function processingTangentExpressions(exp) {
+  try {
+    let matches = exp.matchAll(/(?<=tan)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    for (let match of matches) {
+      let matchingExpressionFound = match[0];
+
+      matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
+         processingTangentExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "cos", 
+        processingCosineExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221A", 
+        processingExpressionsUnderSquareRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "\u221B", 
+        processingExpressionsUnderCubeRoot);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "log", 
+        processingLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "ln", 
+        processingNaturalLogaritmicExpressions);
+      matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
+        processingSineExpressions);
+    
+      exp = exp.replace(/tan\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.tan(eval(matchingExpressionFound)));
+    }  
+  
+    return exp;
+
+  } catch (err) {
+    console.log("Not a number");
+  } 
+}
 function solvingIntermediateExpressions(match, symbol, callback) {
   while (match[0].includes(symbol)) {
     match[0] = callback((match[0]));

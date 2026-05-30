@@ -48,20 +48,20 @@ export class Calculator {
    expression = expression.replace(/(?<!\.)\b0\d+/g, "0");
   } 
   // Adding a multiplication sign after right parenthesis
-  if(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsc]/gu.test(expression)) {
-    expression = expression.replace(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsc]/gu, "*$&");
+  if(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsct]/gu.test(expression)) {
+    expression = expression.replace(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsct]/gu, "*$&");
   }
   //Adding a left parenthesis after advanced operators
-   if(/log|sin|cos|ln|\u221A|\u221B/g.test(expression)) {
-    expression = expression.replace(/log|sin|cos|ln|\u221A|\u221B/g, "$&(");
+   if(/log|sin|cos|ln|tan|\u221A|\u221B/g.test(expression)) {
+    expression = expression.replace(/log|sin|cos|ln|tan|\u221A|\u221B/g, "$&(");
   }
   // Adding a multiplication sign between numbers and advanced operators
-  if(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsc]/gu.test(expression)) {
-    expression = expression.replace(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsc]/gu, "*$&");
+  if(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsct]/gu.test(expression)) {
+    expression = expression.replace(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsct]/gu, "*$&");
   }
   // Adding a multiplication sign between advanced operators
-  if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsc\d]/gu.test(expression)) {
-    expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsc\d]/gu, "*$&");
+  if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsct\d]/gu.test(expression)) {
+    expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsct\d]/gu, "*$&");
   }
 
   expression = this.#fixParentheticalExpression(arr, expression);
