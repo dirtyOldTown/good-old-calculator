@@ -225,9 +225,9 @@ export function convertSymbolToNumber(exp) {
     exp = convert(/\u03C0/gu, exp, Math.PI);
     // Convert symbol 'e' to number
     exp = convert(/e/g, exp, Math.E);
-    if (/\u00D7/g.test(exp)) {
-      exp = exp.replace(/\u00D7/g, "*");
-    }
+    // Convert symbol for multiplication to multiplication sign
+    exp = convert(/\u00D7/g, exp, "*");
+  
     return exp; 
   }
 
