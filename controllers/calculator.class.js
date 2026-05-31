@@ -41,35 +41,42 @@ export class Calculator {
   }
 
   updateRoughExpression(arr, target) {
-  // Get rough expression
-   let expression = this.getStartingExpression(arr);
-   // Disable irregular zero
-   if (/(?<!\.)\b0\d+/g.test(expression)) {
-   expression = expression.replace(/(?<!\.)\b0\d+/g, "0");
-  } 
-  // Adding a multiplication sign after right parenthesis
-  if(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsct]/gu.test(expression)) {
-    expression = expression.replace(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsct]/gu, "*$&");
-  }
-  //Adding a left parenthesis after advanced operators
-   if(/log|sin|cos|ln|tan|\u221A|\u221B/g.test(expression)) {
-    expression = expression.replace(/log|sin|cos|ln|tan|\u221A|\u221B/g, "$&(");
-  }
-  // Adding a multiplication sign between numbers and advanced operators
-  if(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsct]/gu.test(expression)) {
-    expression = expression.replace(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsct]/gu, "*$&");
-  }
-  // Adding a multiplication sign between advanced operators
-  if(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsct\d]/gu.test(expression)) {
-    expression = expression.replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsct\d]/gu, "*$&");
+    // Get rough expression
+    let expression = this.getStartingExpression(arr);
+
+    // Disable irregular zero
+    expression = this.#replace(/(?<!\.)\b0\d+/g, expression, "0");
+
+    //Adding a left parenthesis after advanced operators
+    expression = this.#replace(/log|sin|cos|ln|tan|\u221A|\u221B/g, 
+      expression, "$&(");
+
+    // Adding a multiplication sign after right parenthesis
+    expression = this.#replace(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsct]/gu, 
+      expression, "*$&");
+
+    // Adding a multiplication sign between numbers and advanced operators
+    expression = this.#replace(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsct]/gu, 
+      expression, "*$&");
+
+    // Adding a multiplication sign between advanced operators
+    expression = this.#replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsct\d]/gu, 
+      expression, "*$&");
+      
+    // Deleting an extra right parenthesis and a period after the right parenthesis
+    expression = this.#fixParentheticalExpression(arr, expression);
+
+    return expression;
   }
 
-  expression = this.#fixParentheticalExpression(arr, expression);
+  #replace(regexp, exp, replace) {
+    if (regexp.test(exp)) {
+      exp = exp.replace(regexp, replace)
+    }
 
-  return expression;
+    return exp;
   }
   #fixParentheticalExpression(arr, expression) {
-    // Deleting an extra right parenthesis
     let leftBrackets = expression.match(/\(/g)?.length ?? 0;
     let rightBrackets = expression.match(/\)/g)?.length ?? 0;
 
@@ -78,7 +85,6 @@ export class Calculator {
       expression = expression.slice(0, -1);
     }
 
-    // Deleting a period after the right parenthesis
     if (/\)+\./g.test(expression)) {
       arr.pop();
       expression = expression.slice(0, -1);
