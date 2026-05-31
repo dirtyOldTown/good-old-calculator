@@ -1,5 +1,6 @@
 :root {
   /* Colors */
+  --bg: #333;
   --black:#091413;
   --light-black: #3a4242;
   --dark-green:#285A48;
@@ -16,7 +17,7 @@
   --special-number-font: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 body {
-  background-color: #333;
+  background-color: var(--bg);
 }
 main {
   width: 100%;
