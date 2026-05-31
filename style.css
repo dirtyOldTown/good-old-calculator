@@ -47,6 +47,15 @@ ul li button {
   border-radius: 0.4rem;
   flex: 1;
 }
+.basic-operator {
+  font-size: 1.7rem;
+  color: var(--dark-green);
+}
+.special-number {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 1.4rem;
+  color: var(--dark-green);
+}
 #equal {
   background-color: var(--equal-blue);
   flex: 2;
@@ -79,11 +88,14 @@ button:active {
 #expression {
   font-family: 'Helvetica';
   height: 4rem;
-  font-size: 1rem;
-  color: var(--light-black);
+  font-size: 1.1rem;
+  color: var(--green);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: 0.1rem dotted grey;
+}
+#expression::placeholder {
+  color: var(--green)
 }
 #result {
   font-family: 'Orbitron';

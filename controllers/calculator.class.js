@@ -18,14 +18,14 @@ export class Calculator {
   }
   #preventIncorrectOperator(arr, target) {
     return arr.length > 0 && 
-    (/[\+\/\*\-\(\.gns\u221A\u221B]/gu.test(arr.at(-1).dataset.value) &&
-    /[\+\/\*\-\)\.]/g.test(target.dataset.value)) &&
+    (/[\u00D7\+\/\*\-\(\.gns\u221A\u221B]/gu.test(arr.at(-1).dataset.value) &&
+    /[\u00D7\+\/\*\-\)\.]/g.test(target.dataset.value)) &&
     !(/[\(gns\u221A\u221B]/gu.test( arr.at(-1).dataset.value) &&
     /[\-]/g.test(target.dataset.value));
   }
   #preventIncorrectFirstEntry(arr, target) {
   return arr.length == 0 && 
-  /[\+\/\*\.)]/g.test(target.dataset.value)
+  /[\+\/\*\.\u00D7)]/g.test(target.dataset.value)
   }
   
   removeIncorrectEntry(arr, target) {
@@ -53,15 +53,15 @@ export class Calculator {
 
     // Adding a multiplication sign after right parenthesis
     expression = this.#replace(/(?<=\))[\d\(\u03C0\u0065\u221A\u221Blsct]/gu, 
-      expression, "*$&");
+      expression, "\u00D7$&");
 
     // Adding a multiplication sign between numbers and advanced operators
     expression = this.#replace(/(?<=\d)[\(\u03C0\u0065\u221A\u221Blsct]/gu, 
-      expression, "*$&");
+      expression, "\u00D7$&");
 
     // Adding a multiplication sign between advanced operators
     expression = this.#replace(/(?<=[\u03C0\u0065])[\(\u03C0\u0065\u221A\u221Blsct\d]/gu, 
-      expression, "*$&");
+      expression, "\u00D7$&");
       
     // Deleting an extra right parenthesis and a period after the right parenthesis
     expression = this.#fixParentheticalExpression(arr, expression);

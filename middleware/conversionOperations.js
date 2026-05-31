@@ -222,13 +222,20 @@ function solvingIntermediateExpressions(match, symbol, callback) {
 
 export function convertSymbolToNumber(exp) {
     // Convert symbol 'PI' to number
-    if (/\u03C0/gu.test(exp)) {
-      exp = exp.replace(/\u03C0/gu, Math.PI);
-    }
+    exp = convert(/\u03C0/gu, exp, Math.PI);
     // Convert symbol 'e' to number
-    if (/e/g.test(exp)) {
-      exp = exp.replace(/e/g, Math.E);
+    exp = convert(/e/g, exp, Math.E);
+    if (/\u00D7/g.test(exp)) {
+      exp = exp.replace(/\u00D7/g, "*");
     }
     return exp; 
+  }
+
+  function convert(regexp, exp, replacement) {
+    if (regexp.test(exp)) {
+      exp = exp.replace(regexp, replacement);
+    }
+    
+    return exp;
   }
 
