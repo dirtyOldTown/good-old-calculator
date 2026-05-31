@@ -46,7 +46,7 @@ export class Calculation extends Calculator {
       expression = this.updateExpression(expression);
       try {
         let result = +eval(expression).toFixed(7);
-        displayResult.value = "=" + result;
+        displayResult.value = result;
       } catch (e) {
         console.log("Not-a-Number");
         displayResult.value = "NaN";
