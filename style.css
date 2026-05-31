@@ -1,4 +1,5 @@
 :root {
+  /* Colors */
   --black:#091413;
   --light-black: #3a4242;
   --dark-green:#285A48;
@@ -8,6 +9,8 @@
   --equal-blue: #168aaa;
   --all-clear: #b96746;
   --white: #e9eeec;
+
+  /* Fonts */
   --expression-font: 'Helvetica';
   --result-font: 'Orbitron';
   --special-number-font: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
