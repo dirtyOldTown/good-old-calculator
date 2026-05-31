@@ -97,7 +97,7 @@ button:active {
   font-family: var(--expression-font);
   height: 4rem;
   font-size: 1.1rem;
-  color: var(--green);
+  color: var(--dark-green);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: 0.1rem dotted grey;

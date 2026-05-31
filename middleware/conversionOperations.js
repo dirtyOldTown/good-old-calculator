@@ -225,9 +225,10 @@ export function convertSymbolToNumber(exp) {
     exp = convert(/\u03C0/gu, exp, Math.PI);
     // Convert symbol 'e' to number
     exp = convert(/e/g, exp, Math.E);
-    // Convert symbol for multiplication to multiplication sign
+    // Convert symbol for multiplication 
     exp = convert(/\u00D7/g, exp, "*");
-  
+    // Convert symbol for subtract 
+    exp = convert(/\u2212/g, exp, "-");
     return exp; 
   }
 
