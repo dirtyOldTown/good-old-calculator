@@ -11,8 +11,8 @@ export class Calculation extends Calculator {
     localStorage.setItem("expression", exp);
   }
 
-  getExpression() {
-    return localStorage.getItem("expression");
+  getExpression(exp) {
+    return localStorage.getItem(exp);
   }
 
   removeExpression(exp) {
@@ -40,7 +40,7 @@ export class Calculation extends Calculator {
 
   getResult(displayResult) {
     EQUAL.addEventListener("click", (e) => {
-      let expression = this.getExpression();
+      let expression = this.getExpression("expression");
       DISPLAY_EXPRESSION.value = expression;
       expression = convertSymbolToNumber(expression);
       expression = this.updateExpression(expression);
