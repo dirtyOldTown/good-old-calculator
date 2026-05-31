@@ -6,10 +6,14 @@
   --light-green:#B0E4CC;
   --monitor: #c7ecdb;
   --equal-blue: #168aaa;
+  --all-clear: #b96746;
+  --white: #e9eeec;
+  --expression-font: 'Helvetica';
+  --result-font: 'Orbitron';
+  --special-number-font: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 body {
   background-color: #333;
-  font-family: monospace;
 }
 main {
   width: 100%;
@@ -35,24 +39,24 @@ ul {
   justify-content: flex-start;
 }
 ul li button {
-  font-family: Helvetica, sans-serif;
+  font-family: var(--expression-font);
   font-size: large;
   color: var(--black);
   font-weight: 500;
   background-color: var(--light-green);
   width: 4rem;
   height: 3rem;
-  margin: 0.2rem;
+  margin: 0.14rem;
   cursor: pointer;
   border-radius: 0.4rem;
   flex: 1;
 }
 .basic-operator {
   font-size: 1.7rem;
-  color: var(--dark-green);
+  color: var(--dark-green)
 }
 .special-number {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: var(--special-number-font);
   font-size: 1.4rem;
   color: var(--dark-green);
 }
@@ -86,7 +90,7 @@ button:active {
   resize: none;
 }
 #expression {
-  font-family: 'Helvetica';
+  font-family: var(--expression-font);
   height: 4rem;
   font-size: 1.1rem;
   color: var(--green);
@@ -98,7 +102,7 @@ button:active {
   color: var(--green)
 }
 #result {
-  font-family: 'Orbitron';
+  font-family: var(--result-font);
   font-size: 1.2rem;
   font-weight: 500;
   border-top-right-radius: 0;
@@ -106,15 +110,14 @@ button:active {
 }
 .fa-back {
   font-size: 1.4rem;
-  color:#fff;
+  color:var(--white);
 }
 .computation {
   background-color: var(--green);
-  color: #fff;
+  color: var(--white);
 }
 .regulation {
-  background-color:#b96746;
-  color: #FFF;
+  background-color:var(--all-clear)
 }
 
 @media screen and (max-width: 480px) {
