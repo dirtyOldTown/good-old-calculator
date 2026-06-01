@@ -102,9 +102,6 @@ button:active {
   border-bottom-right-radius: 0;
   border-bottom: 0.1rem dotted grey;
 }
-#expression::placeholder {
-  color: var(--green)
-}
 #result {
   font-family: var(--result-font);
   font-size: 1.2rem;

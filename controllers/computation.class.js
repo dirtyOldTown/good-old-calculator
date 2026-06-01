@@ -50,6 +50,7 @@ export class Calculation extends Calculator {
       } catch (e) {
         console.log("Not-a-Number");
         displayResult.value = "NaN";
+        return;
       }
     });
   }
