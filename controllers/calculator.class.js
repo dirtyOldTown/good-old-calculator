@@ -69,9 +69,9 @@ export class Calculator {
     return expression;
   }
 
-  #replace(regexp, exp, replace) {
+  #replace(regexp, exp, replacement) {
     if (regexp.test(exp)) {
-      exp = exp.replace(regexp, replace)
+      exp = exp.replace(regexp, replacement)
     }
 
     return exp;
