@@ -18,14 +18,14 @@ export class Calculator {
   }
   #preventIncorrectOperator(arr, target) {
     return arr.length > 0 && 
-    (/[\u00D7\+\/\*\-\(\.gns\u221A\u221B]/gu.test(arr.at(-1).dataset.value) &&
-    /[\u00D7\+\/\*\-\)\.]/g.test(target.dataset.value)) &&
+    (/[\u00D7\+\/\u00D7\u2212\(\.gns\u221A\u221B]/gu.test(arr.at(-1).dataset.value) &&
+    /[\u00D7\+\/\u00D7\u2212\)\.]/g.test(target.dataset.value)) &&
     !(/[\(gns\u221A\u221B]/gu.test( arr.at(-1).dataset.value) &&
-    /[\-]/g.test(target.dataset.value));
+    /[\u2212]/g.test(target.dataset.value));
   }
   #preventIncorrectFirstEntry(arr, target) {
   return arr.length == 0 && 
-  /[\+\/\*\.\u00D7)]/g.test(target.dataset.value)
+  /[\+\/\.\u00D7)]/g.test(target.dataset.value)
   }
   
   removeIncorrectEntry(arr, target) {
