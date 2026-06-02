@@ -36,5 +36,5 @@ for more complex expressions, it is enough to enter the right parenthesis arbitr
 if you try to enter an unnecessary parenthesis, and therefore an incorrect expression.
 
 ### Video examples
-[video-exp1](https://dirtyoldtown.github.io/good-old-calculator/video/videoexp.mp4)
-[video-exp1](https://dirtyoldtown.github.io/good-old-calculator/video/videoexp2.mp4)
+- [video-exp1](https://dirtyoldtown.github.io/good-old-calculator/video/videoexp.mp4)
+- [video-exp2](https://dirtyoldtown.github.io/good-old-calculator/video/videoexp2.mp4)
