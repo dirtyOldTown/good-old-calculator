@@ -37,3 +37,4 @@ if you try to enter an unnecessary parenthesis, and therefore an incorrect expre
 
 ### Video examples
 [video-exp1](https://dirtyoldtown.github.io/good-old-calculator/video/videoexp.mp4)
+[video-exp1](https://dirtyoldtown.github.io/good-old-calculator/video/videoexp2.mp4)
