@@ -21,17 +21,18 @@ export class Calculator {
     (/[\u00D7\+\/\u00D7\u2212\(\.gns\u221A\u221B]/gu.test(arr.at(-1).dataset.value) &&
     /[\u00D7\+\/\u00D7\u2212\)\.]/g.test(target.dataset.value)) &&
     !(/[\(gns\u221A\u221B]/gu.test( arr.at(-1).dataset.value) &&
-    /[\u2212]/g.test(target.dataset.value));
+    /[\u2212]/gu.test(target.dataset.value));
   }
   #preventIncorrectFirstEntry(arr, target) {
   return arr.length == 0 && 
-  /[\+\/\.\u00D7)]/g.test(target.dataset.value)
+  /[\+\/\.\u00D7)]/gu.test(target.dataset.value)
   }
   
   removeIncorrectEntry(arr, target) {
     this.#removeIncorrectPeriod(arr, /\b(\d+\.\d+\.)/g, target, this.getStartingExpression);
     this.#removeIncorrectPeriod(arr, /[\p{L}\u221A\u221B][\.]|\.[\p{L}\u221A\u221B]|[\p{L}\u221A\u221B]\)\./gu, 
       target, this.getStartingExpression);
+    this.#removeIncorrectPeriod(arr, /(?<=\.)\(/g, target, this.getStartingExpression);
   }
   #removeIncorrectPeriod(arr, regexp, target, callback) {
     if (arr.length > 0 &&
@@ -48,7 +49,7 @@ export class Calculator {
     expression = this.#replace(/(?<!\.)\b0\d+/g, expression, "0");
 
     //Adding a left parenthesis after advanced operators
-    expression = this.#replace(/log|sin|cos|ln|tan|\u221A|\u221B/g, 
+    expression = this.#replace(/log|sin|cos|ln|tan|\u221A|\u221B/gu, 
       expression, "$&(");
 
     // Adding a multiplication sign after right parenthesis
