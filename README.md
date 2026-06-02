@@ -12,7 +12,7 @@ would, like some other calculator applications, have direct calculations etc.
 ## Features of the calculator
 
 ### Preventing errors when entering expressions
-[!TIP]
+
 - preventing the entry of an irregular number
   eg: 00, 04, 7.77.77, 0.&pi;, 34.e, &pi;.e, e.34
 - preventing duplication of operators
@@ -23,7 +23,7 @@ would, like some other calculator applications, have direct calculations etc.
   eg: (7 - 8)), ( 4 * (3 + 7)))
 
 ### Facilitating input when typing quickly
-[!TIP]
+
 - adding a multiplication sign in certain cases
   for example if you enter 6&pi;(2 + 7)9e, you get directly 6 * &pi; * (2 + 7) * 9 * e
 - adding a left parenthesis immediately after entering a complex operator
@@ -38,3 +38,4 @@ if you try to enter an unnecessary parenthesis, and therefore an incorrect expre
 ### Calculation
 
 Examples of complex expressions that passed the check:
+<a href="video/Snimanje 2026-05-31 122713.mp4">Link</a>
