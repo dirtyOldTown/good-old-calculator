@@ -1,4 +1,4 @@
-[# Old Calculator Simulation 
+# Old Calculator Simulation 
 
 ## Intro 
 I present a calculator simulation project, which would
@@ -38,4 +38,3 @@ if you try to enter an unnecessary parenthesis, and therefore an incorrect expre
 ### Calculation
 
 Examples of complex expressions that passed the check:
-<a href="video/Snimanje 2026-05-31 122713.mp4">Link</a>
