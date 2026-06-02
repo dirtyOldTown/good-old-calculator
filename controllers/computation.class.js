@@ -21,6 +21,7 @@ export class Calculation extends Calculator {
   #update(regexp, exp, callback) {
     while(regexp.test(exp)) {
     exp = callback(exp);
+    break;
   } 
 
   return exp;
@@ -50,7 +51,6 @@ export class Calculation extends Calculator {
       } catch (e) {
         console.log("Not-a-Number");
         displayResult.value = "NaN";
-        return;
       }
     });
   }

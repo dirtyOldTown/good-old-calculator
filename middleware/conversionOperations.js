@@ -26,7 +26,6 @@ export function processingExpressionsUnderSquareRoot(exp) {
 
   } catch (err) {
     console.log("Not a number");
-    return;
   } 
 }
 
@@ -58,7 +57,6 @@ export function processingExpressionsUnderCubeRoot(exp) {
 
   } catch (err) {
     console.log("Not a number");
-    return;
   } 
 }
 
@@ -90,7 +88,6 @@ export function processingLogaritmicExpressions(exp) {
 
   } catch (err) {
     console.log("Not a number");
-    return;
   } 
 }
 export function processingNaturalLogaritmicExpressions(exp) {
@@ -121,7 +118,6 @@ export function processingNaturalLogaritmicExpressions(exp) {
 
   } catch (err) {
     console.log("Not a number");
-    return;
   } 
 }
 
@@ -153,7 +149,6 @@ export function processingSineExpressions(exp) {
 
   } catch (err) {
     console.log("Not a number");
-    return;
   } 
 }
 export function processingCosineExpressions(exp) {
@@ -184,7 +179,6 @@ export function processingCosineExpressions(exp) {
 
   } catch (err) {
     console.log("Not a number");
-    return;
   } 
 }
 
@@ -216,7 +210,6 @@ export function processingTangentExpressions(exp) {
 
   } catch (err) {
     console.log("Not a number");
-    return;
   } 
 }
 function solvingIntermediateExpressions(match, symbol, callback) {
