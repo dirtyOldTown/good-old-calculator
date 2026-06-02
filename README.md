@@ -35,4 +35,5 @@ PS. There is a function that ensures that there can be no extra (right) parenthe
 for more complex expressions, it is enough to enter the right parenthesis arbitrarily and the process will stop 
 if you try to enter an unnecessary parenthesis, and therefore an incorrect expression.
 
-
+### Video examples
+[video-exp1](https://dirtyoldtown.github.io/good-old-calculator/video/videoexp.mp4)
