@@ -16,7 +16,7 @@ would, like some other calculator applications, have direct calculations etc.
 - preventing the entry of an irregular number
   eg: 00, 04, 7.77.77, 0.&pi;, 34.e, &pi;.e, e.34
 - preventing duplication of operators
-  eg: *+, -+, /*- 
+  eg: /+/, -+, /*- 
 - prevention of irregular operator inside the bracket and around the bracket
   eg: (+7*7*), (./7-7+), (55 * 7/), (5 + 8).7, 6.(5 + 7)
 - preventing the addition of extra parentheses
