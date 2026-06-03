@@ -134,6 +134,7 @@ button:active {
     height: 96vh;
     top: 0;
     border: 0;
+    padding-top: 2.4rem;
   }
   .table-container {
     margin-top: 2.4rem;
