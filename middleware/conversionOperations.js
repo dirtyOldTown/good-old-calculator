@@ -1,6 +1,6 @@
 export function processingExpressionsUnderSquareRoot(exp) {
   try {
-    let matches = exp.matchAll(/(?<=\u221A)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    let matches = exp.matchAll(/(?<=\u221A)\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/gu);
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
@@ -19,7 +19,7 @@ export function processingExpressionsUnderSquareRoot(exp) {
       matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
         processingTangentExpressions);
  
-      exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sqrt(eval(matchingExpressionFound)));
+      exp = exp.replace(/\u221A\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/u, Math.sqrt(eval(matchingExpressionFound)));
     }
 
     return exp;
@@ -31,7 +31,7 @@ export function processingExpressionsUnderSquareRoot(exp) {
 
 export function processingExpressionsUnderCubeRoot(exp) {
   try {
-    let matches = exp.matchAll(/(?<=\u221B)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    let matches = exp.matchAll(/(?<=\u221B)\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/gu);
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
@@ -50,7 +50,7 @@ export function processingExpressionsUnderCubeRoot(exp) {
       matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
         processingTangentExpressions);
  
-      exp = exp.replace(/\u221B\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.cbrt(eval(matchingExpressionFound)));
+      exp = exp.replace(/\u221B\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/u, Math.cbrt(eval(matchingExpressionFound)));
     }
     
     return exp;
@@ -62,7 +62,7 @@ export function processingExpressionsUnderCubeRoot(exp) {
 
 export function processingLogaritmicExpressions(exp) {
   try {
-    let matches = exp.matchAll(/(?<=log)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    let matches = exp.matchAll(/(?<=log)\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/gu);
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
@@ -81,7 +81,7 @@ export function processingLogaritmicExpressions(exp) {
       matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
          processingTangentExpressions);
     
-      exp = exp.replace(/log\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log10(eval(matchingExpressionFound)));
+      exp = exp.replace(/log\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/u, Math.log10(eval(matchingExpressionFound)));
     }  
   
     return exp;
@@ -92,7 +92,7 @@ export function processingLogaritmicExpressions(exp) {
 }
 export function processingNaturalLogaritmicExpressions(exp) {
   try {
-    let matches = exp.matchAll(/(?<=ln)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    let matches = exp.matchAll(/(?<=ln)\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/gu);
     for (let match of matches) {
       let matchingExpressionFound = match[0];
       
@@ -111,7 +111,7 @@ export function processingNaturalLogaritmicExpressions(exp) {
       matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
          processingTangentExpressions);
     
-      exp = exp.replace(/ln\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.log(eval(matchingExpressionFound)));
+      exp = exp.replace(/ln\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/u, Math.log(eval(matchingExpressionFound)));
     }  
 
     return exp;
@@ -123,7 +123,7 @@ export function processingNaturalLogaritmicExpressions(exp) {
 
 export function processingSineExpressions(exp) {
   try {
-    let matches = exp.matchAll(/(?<=sin)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    let matches = exp.matchAll(/(?<=sin)\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/gu);
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
@@ -142,7 +142,7 @@ export function processingSineExpressions(exp) {
       matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
         processingTangentExpressions);
     
-      exp = exp.replace(/sin\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.sin(eval(matchingExpressionFound)));
+      exp = exp.replace(/sin\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/u, Math.sin(eval(matchingExpressionFound)));
     }  
   
     return exp;
@@ -153,7 +153,7 @@ export function processingSineExpressions(exp) {
 }
 export function processingCosineExpressions(exp) {
   try {
-    let matches = exp.matchAll(/(?<=cos)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    let matches = exp.matchAll(/(?<=cos)\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/gu);
     for (let match of matches) {
       let matchingExpressionFound = match[0];
       
@@ -172,7 +172,7 @@ export function processingCosineExpressions(exp) {
       matchingExpressionFound = solvingIntermediateExpressions(match, "tan", 
          processingTangentExpressions);
     
-      exp = exp.replace(/cos\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.cos(eval(matchingExpressionFound)));
+      exp = exp.replace(/cos\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/u, Math.cos(eval(matchingExpressionFound)));
     }  
   
     return exp;
@@ -184,7 +184,7 @@ export function processingCosineExpressions(exp) {
 
 export function processingTangentExpressions(exp) {
   try {
-    let matches = exp.matchAll(/(?<=tan)\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/gu);
+    let matches = exp.matchAll(/(?<=tan)\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/gu);
     for (let match of matches) {
       let matchingExpressionFound = match[0];
 
@@ -203,7 +203,7 @@ export function processingTangentExpressions(exp) {
       matchingExpressionFound = solvingIntermediateExpressions(match, "sin", 
         processingSineExpressions);
     
-      exp = exp.replace(/tan\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\)/u, Math.tan(eval(matchingExpressionFound)));
+      exp = exp.replace(/tan\((?:[^()]|\((?:[^()]|\((?:[^()]|\([^()]*\))*\))*\))*\)/u, Math.tan(eval(matchingExpressionFound)));
     }  
   
     return exp;
