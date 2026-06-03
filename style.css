@@ -127,10 +127,13 @@ button:active {
   }
   main {
     height: 100%;
+    position: fixed;
   }
   .calculator-container {
     width: 90%;
     height: 96vh;
+    top: 0;
+    border: 0;
   }
   .table-container {
     margin-top: 4rem;
