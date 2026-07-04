@@ -66,10 +66,12 @@ export class Calculation extends Calculator {
   }
 
   clear(arr, expression, displayExp, displayResult, isClicked) {
-    CLEAR.onclick = () => {
+    CLEAR.onclick = (e) => {
       arr.pop();
-      displayExp.value = displayExp.value.slice(0, -1);
-      this.setExpression(displayExp.value);
+      expression = this.getStartingExpression(arr);
+      expression = this.updateRoughExpression(arr);
+      this.setExpression(expression);
+      displayExp.value = expression;
       if (displayExp.value == "") {
          this.setExpression(0);
       }
