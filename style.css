@@ -130,11 +130,11 @@ button:active {
     position: fixed;
   }
   .calculator-container {
-    width: 90%;
+    width: 93%;
     height: 96vh;
     top: 0;
     border: 0;
-    padding-top: 2.4rem;
+    padding-top: 1rem;
   }
   .table-container {
     margin-top: 2.4rem;
