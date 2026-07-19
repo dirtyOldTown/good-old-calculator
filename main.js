@@ -11,6 +11,7 @@ let calculator = new Calculator();
 let calculation = new Calculation();
 
 document.addEventListener("click", (e) => {
+  e.preventDefault();
   let target = e.target.closest(".input-view");
   if (!target) return;
 
