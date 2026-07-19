@@ -46,7 +46,7 @@ export class Calculation extends Calculator {
       expression = convertSymbolToNumber(expression);
       expression = this.updateExpression(expression);
       try {
-        let result = +eval(expression).toFixed(7);
+        let result = +eval(expression).toFixed(10);
         displayResult.value = result;
       } catch (e) {
         console.log("Not-a-Number");

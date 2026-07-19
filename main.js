@@ -17,7 +17,7 @@ document.addEventListener("click", (e) => {
   //Regulation when entering expression
   calculator.preventIncorrectEntry(arr, target);
   calculator.removeIncorrectEntry(arr, target);
-  
+
   //Update rough expression before calculation
   expression = calculator.updateRoughExpression(arr);
   DISPLAY_EXPRESSION.value = expression;
