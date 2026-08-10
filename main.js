@@ -42,4 +42,3 @@ DISPLAY_RESULT.addEventListener("focus", () => DISPLAY_RESULT.blur());
     alert("Please close the parenthesis after entering the expression.\nDo not enter extra parenthesis for now.");
   }, { once: true });
 }); */
-
