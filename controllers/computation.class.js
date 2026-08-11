@@ -55,8 +55,7 @@ export class Calculation extends Calculator {
 
       try {
         let result = +eval(updatingExpression).toFixed(10);
-        let formatter = new Intl.NumberFormat("en-US")
-        displayResult.value = formatter.format(result);
+        displayResult.value = result;
       } catch (e) {
         console.log("Not-a-Number");
         displayResult.value = "NaN";
