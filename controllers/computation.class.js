@@ -47,17 +47,16 @@ export class Calculation extends Calculator {
       expression = this.updateExpression(expression);
       this.setExpression("result", expression)
 
-      // Correction of the resulting expression
-      let finalResult = this.getExpression("result");
-      if (/(\-\-)/g.test(finalResult)) {
-        console.log("OK")
-        finalResult = finalResult.replaceAll(/(\-\-)/g, "+")
+      // Correction of the updating expression
+      let updatingExpression = this.getExpression("result");
+      if (/(\-\-)/g.test(updatingExpression)) {
+        updatingExpression = updatingExpression.replaceAll(/(\-\-)/g, "+")
       }
 
       try {
-        console.log(finalResult)
-        let result = +eval(finalResult).toFixed(10);
-        displayResult.value = result;
+        let result = +eval(updatingExpression).toFixed(10);
+        let formatter = new Intl.NumberFormat("en-US")
+        displayResult.value = formatter.format(result);
       } catch (e) {
         console.log("Not-a-Number");
         displayResult.value = "NaN";
@@ -81,7 +80,7 @@ export class Calculation extends Calculator {
       arr.pop();
       expression = this.getStartingExpression(arr);
       expression = this.updateRoughExpression(arr);
-      this.setExpression(expression);
+      this.setExpression("expression", expression);
       displayExp.value = expression;
       if (displayExp.value == "") {
          this.setExpression(0);
