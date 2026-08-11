@@ -131,18 +131,18 @@ ul li button:active {
   body {
     margin: 0;
   }
-  main {
+/*   main {
     height: 100%;
     position: fixed;
-  }
-  .calculator-container {
+  } */
+  /* .calculator-container {
     width: 93%;
     height: 96vh;
     top: 0;
     border: 0;
     padding-top: 1.1rem;
-  }
-  .table-container {
+  } */
+  /* .table-container {
     margin-top: 2.4rem;
   }
   ul li button {
@@ -162,6 +162,6 @@ ul li button:active {
     font-style: italic;
     text-align: center;
 }
-
+ */
 }
 

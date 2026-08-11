@@ -7,12 +7,12 @@ import { processingExpressionsUnderSquareRoot, processingLogaritmicExpressions,
 import { DISPLAY_EXPRESSION } from "../config/elements.js";
 
 export class Calculation extends Calculator {
-  setExpression(exp) {
-    localStorage.setItem("expression", exp);
+  setExpression(key, exp) {
+    localStorage.setItem(key, exp);
   }
 
-  getExpression(exp) {
-    return localStorage.getItem(exp);
+  getExpression(key) {
+    return localStorage.getItem(key);
   }
 
   removeExpression(exp) {
@@ -45,8 +45,18 @@ export class Calculation extends Calculator {
       DISPLAY_EXPRESSION.value = expression;
       expression = convertSymbolToNumber(expression);
       expression = this.updateExpression(expression);
+      this.setExpression("result", expression)
+
+      // Correction of the resulting expression
+      let finalResult = this.getExpression("result");
+      if (/(\-\-)/g.test(finalResult)) {
+        console.log("OK")
+        finalResult = finalResult.replaceAll(/(\-\-)/g, "+")
+      }
+
       try {
-        let result = +eval(expression).toFixed(10);
+        console.log(finalResult)
+        let result = +eval(finalResult).toFixed(10);
         displayResult.value = result;
       } catch (e) {
         console.log("Not-a-Number");
@@ -61,7 +71,8 @@ export class Calculation extends Calculator {
       expression = "";
       displayExp.value = "";
       displayResult.value = "";
-      this.setExpression("0");
+      this.setExpression("expression", "0");
+      this.setExpression("result", "0");
     }
   }
 

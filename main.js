@@ -24,7 +24,7 @@ document.addEventListener("click", (e) => {
   DISPLAY_EXPRESSION.value = expression;
 
   //Set expression in local storage
-  calculation.setExpression(expression);
+  calculation.setExpression("expression", expression);
 });
 // Computation
 
