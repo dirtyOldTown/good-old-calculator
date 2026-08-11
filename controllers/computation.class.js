@@ -54,7 +54,7 @@ export class Calculation extends Calculator {
       }
 
       try {
-        let result = +eval(updatingExpression).toFixed(10);
+        let result = +eval(updatingExpression).toFixed(7);
         displayResult.value = result;
       } catch (e) {
         console.log("Not-a-Number");
