@@ -55,7 +55,9 @@ export class Calculation extends Calculator {
 
       try {
         let result = +eval(updatingExpression).toFixed(7);
-        displayResult.value = result;
+        displayResult.value = result.toLocaleString("sr-RS", {
+          minimumFractionDigits: 0, maximumFractionDigits: 5
+        });
       } catch (e) {
         console.log("Not-a-Number");
         displayResult.value = "NaN";
