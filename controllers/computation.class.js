@@ -54,7 +54,7 @@ export class Calculation extends Calculator {
       }
 
       try {
-        let result = +eval(updatingExpression).toFixed(7);
+        let result = +eval(updatingExpression).toFixed(10);
         if (result == "-0") result = 0;
         displayResult.value = result.toLocaleString("sr-RS", {
           minimumFractionDigits: 0, maximumFractionDigits: 5
